@@ -1,0 +1,53 @@
+{
+	"enableProposedApi": true,
+	"name": "vscode-extension-playground",
+	"displayName": "VS Code Extension Playground",
+	"description": "VS Code Extension Playground",
+	"version": "0.0.1",
+	"publisher": "vscode-samples",
+	"repository": "https://github.com/Microsoft/vscode-extension-samples",
+	"engines": {
+		"vscode": "^1.49.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onNotebook:vscode-extension-playground",
+		"onNotebookEditor:vscode-extension-playground"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"notebookProvider": [
+			{
+				"viewType": "vscode-extension-playground",
+				"displayName": "VS Code Extension Playground",
+				"selector": [
+					{
+						"filenamePattern": "*.vscodeext"
+					}
+				]
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint . --ext .ts,.tsx",
+		"watch": "tsc -watch -p ./",
+		"download-api": "vscode-dts dev",
+		"postdownload-api": "vscode-dts master",
+		"postinstall": "npm run download-api"
+	},
+	"dependencies": {
+		"typescript": "^4.0.2"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.0",
+		"@typescript-eslint/eslint-plugin": "^3.0.2",
+		"@typescript-eslint/parser": "^3.0.2",
+		"eslint": "^7.1.0",
+		"typescript": "^3.9.4",
+		"vscode-dts": "^0.3.1"
+	}
+}
